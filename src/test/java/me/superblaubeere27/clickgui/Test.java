@@ -16,6 +16,7 @@ import me.superblaubeere27.clickgui.components.ScrollPane;
 import me.superblaubeere27.clickgui.components.*;
 import me.superblaubeere27.clickgui.layout.FlowLayout;
 import me.superblaubeere27.clickgui.layout.GridLayout;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -87,6 +88,8 @@ public class Test extends BasicGame {
         settingPane.addComponent(new CheckBox(renderer, "Enabled"));
         settingPane.addComponent(new Label(renderer, "Another: "));
         settingPane.addComponent(new CheckBox(renderer, "Raytracing"));
+        settingPane.addComponent(new Label(renderer, "Keybind: "));
+        settingPane.addComponent(new KeybindButton(renderer, Keyboard::getKeyName));
 
         Pane sortingPane = new Pane(renderer, new GridLayout(4));
 
@@ -112,7 +115,7 @@ public class Test extends BasicGame {
 
         AtomicInteger i = new AtomicInteger();
 
-        button.setListener(() -> button.setTitle("Click me (" + i.getAndIncrement() + ")"));
+        button.setOnClickListener(() -> button.setTitle("Click me (" + i.getAndIncrement() + ")"));
 
         conentPane.addComponent(buttonPane);
 
@@ -159,6 +162,7 @@ public class Test extends BasicGame {
 
         graphics.drawImage(background, 0, 0, 0, 0, 1920, 1080);
 
+//        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         window.render(renderer);
     }
 

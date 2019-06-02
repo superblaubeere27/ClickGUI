@@ -82,7 +82,11 @@ public class Button extends AbstractComponent {
         setHeight(Math.max(renderer.getStringHeight(title) * 5 / 4, preferredHeight));
     }
 
-    public void setListener(ActionEventListener listener) {
+    public ActionEventListener getOnClickListener() {
+        return listener;
+    }
+
+    public void setOnClickListener(ActionEventListener listener) {
         this.listener = listener;
     }
 }

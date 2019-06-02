@@ -97,7 +97,7 @@ public class ComboBox extends AbstractComponent {
                 x + getWidth() - preferredHeight + preferredHeight * 3.0 / 4.0, y + preferredHeight / 4.0,
                 Window.FOREGROUND);
 
-        renderer.drawOutline(x, y, getWidth(), getHeight(), 1.0f, (hovered || opened) ? Window.SECONDARY_OUTLINE : Window.SECONDARY_FOREGROUND);
+        renderer.drawOutline(x, y, getWidth(), getHeight(), 1.0f, (hovered && !opened) ? Window.SECONDARY_OUTLINE : Window.SECONDARY_FOREGROUND);
 
         String text = values[selectedIndex];
 
@@ -178,6 +178,10 @@ public class ComboBox extends AbstractComponent {
 
     public int getSelectedIndex() {
         return selectedIndex;
+    }
+
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
     }
 
     public void setListener(ValueChangeListener<Integer> listener) {

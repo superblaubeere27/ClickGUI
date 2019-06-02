@@ -116,4 +116,9 @@ public class Spoiler extends AbstractComponent {
     public boolean mouseWheel(int change) {
         return opened && contentPane.mouseWheel(change);
     }
+
+    @Override
+    public boolean keyPressed(int key, char c) {
+        return opened && contentPane.keyPressed(key, c);
+    }
 }

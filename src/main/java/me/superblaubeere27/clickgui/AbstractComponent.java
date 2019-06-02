@@ -95,4 +95,5 @@ public abstract class AbstractComponent {
     public boolean mouseWheel(int change) {
         return false;
     }
+
 }
