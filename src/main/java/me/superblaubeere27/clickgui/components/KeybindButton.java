@@ -66,7 +66,12 @@ public class KeybindButton extends Button {
             listening = false;
 
             if (Keyboard.getEventKey() != 256 && Keyboard.getEventCharacter() != 0) {
-                this.value = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
+                int newValue = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
+
+
+                if (listener != null)
+                    if (listener.onValueChange(newValue))
+                        this.value = newValue;
             }
 
             updateState();
